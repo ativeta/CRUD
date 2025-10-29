@@ -18,7 +18,7 @@ authors = [
 
 id_counter = 3
 while True:
-    print("Pasirinkite, ką norite daryti toliau")
+    print("Pasirinkite, ką norite daryti toliau:")
     print("1. Peržiūrėti knygų autorius")
     print("2. Pridėti naują autorių")
     print("3. Redaguoti autorių")
@@ -33,9 +33,9 @@ while True:
                 print(item)
         case '2':
             print("Jūs pasirinkote įtraukti naują autorių į sąrašą")
-            print("Įveskite autoriaus vardą")
+            print("Įveskite autoriaus vardą:")
             name = input()
-            print("Įveskite autoriaus pavardę")
+            print("Įveskite autoriaus pavardę:")
             surname = input()
             id_counter +=1
             item = {'id':id_counter, "name":name, "surname":surname}
@@ -48,9 +48,9 @@ while True:
             for i, item in enumerate(authors):
                 if str(item['id']) == edit_id:
                     print(item)
-                    print("Įveskite autoriaus vardą")
+                    print("Įveskite naują autoriaus vardą:")
                     authors[i]['name'] = input()
-                    print("Įveskite autoriaus pavardę")
+                    print("Įveskite naują autoriaus pavardę:")
                     authors[i]['surname'] = input()
         case '4':
             print("Jūs pasirinkote pašalinti autorių")
@@ -63,5 +63,5 @@ while True:
         case '5':
             print("Jūs pasirinkote baigti autorių sąrašo peržiūrą")
             break
-        case _ : #defaultas, kai ivedama belekas
-            print("Ar jūs tikrai tai turėjote omenyje")
+        case _ :
+            print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
