@@ -1,14 +1,43 @@
 def options_list():
     print("Pasirinkite, ką norite daryti toliau:")
-    print("1. Peržiūrėti knygų autorius")
-    print("2. Pridėti naują autorių")
+    print("1. Peržiūrėti knygų autorius ir jų knygas")
+    print("2. Pridėti naują autorių ir knygą")
     print("3. Redaguoti autorių")
-    print("4. Ištrinti autorių")
-    print("5. Baigti autorių peržiūrą")
+    print("4. Redaguoti knygą")
+    print("5. Ištrinti autorių arba knygą")
+    print("6. Baigti bibliotekos peržiūrą")
 
-def print_authors(authors):
-    for author in authors:
-        print(f'{author['id']}. Autorius: {author['name']} {author['surname']}')
+
+def library_options():
+    print("1. Peržiūrėti autorių sąrašą")
+    print("2. Peržiūrėti knygų sąrašą")
+    print("3. Peržiūrėti knygas pagal autorių")
+
+
+
+library_options()
+
+
+
+def print_authors(authors, books):
+    for book in books:
+        for author in authors:
+            if author['id'] == book['author_id']:
+                print(
+                    f"{author['id']}. {author['name']} {author['surname']}, Knyga: '{book['book_title']}', Žanras: {book['book_genre']}")
+    print("Jeigu norite pamatyti tik autorius, įrašykite raidę A. Jei norite pamatyti tik knygas, įrašykite raidę B")
+    while True:
+        letter = input().upper()
+        match letter:
+            case 'A':
+                for author in authors:
+                    print(f'{author['id']}. Autorius: {author['name']} {author['surname']}')
+            case 'B':
+                for book in books:
+                    print(f'{book["id"]}. {book["book_title"]} {book["book_genre"]}')
+            case _ :
+                print(f'Tokio pasirinkimo nėra. Grįžtame į pradinį meniu.')
+                options_list()
 
 def add_author(id_counter,authors):
     print("Įveskite autoriaus vardą:")

@@ -1,7 +1,10 @@
+from books_data import *
 from data import authors_list
 from list_CRUD import *
 
 authors = authors_list()
+books = books_data()
+
 id_counter = 3
 
 while True:
@@ -9,8 +12,8 @@ while True:
     option = input()
     match option:
         case '1':
-            print("Jūs pasirinkote peržiūrėti autorių sąrašą")
-            print_authors(authors)
+            print("Autoriai ir knygos:")
+            print_authors(authors, books)
         case '2':
             print("Jūs pasirinkote įtraukti naują autorių į sąrašą")
             id_counter = add_author(id_counter, authors)
@@ -25,3 +28,4 @@ while True:
             break
         case _ :
             print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
+
