@@ -12,7 +12,7 @@ while True:
     option = input()
     match option:
         case '1':
-            print("Autoriai ir knygos:")
+            print("Biblioteka:")
             print_authors(authors, books)
         case '2':
             print("Jūs pasirinkote įtraukti naują autorių į sąrašą")

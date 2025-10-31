@@ -23,5 +23,13 @@ def books_data():
             'author_id': 3,
             'author_name': 'Undinė',
             'author_surname': 'Radzevičiūtė',
-        }
+        },
+        {
+            'id': 4,
+            'book_title': 'Test',
+            'book_genre': 'Test',
+            'author_id': 1,
+            'author_name': 'Kristina',
+            'author_surname': 'Sabaliauskaitė',
+        },
     ]

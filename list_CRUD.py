@@ -1,3 +1,6 @@
+from unittest import case
+
+
 def options_list():
     print("Pasirinkite, ką norite daryti toliau:")
     print("1. Peržiūrėti knygų autorius ir jų knygas")
@@ -9,9 +12,11 @@ def options_list():
 
 
 def library_options():
+    print("Pasirinkite, ką norite daryti toliau:")
     print("1. Peržiūrėti autorių sąrašą")
     print("2. Peržiūrėti knygų sąrašą")
     print("3. Peržiūrėti knygas pagal autorių")
+    print("4. Grįžti į pagrindinį meniu")
 
 
 
@@ -20,21 +25,33 @@ library_options()
 
 
 def print_authors(authors, books):
+    num = 0
     for book in books:
         for author in authors:
             if author['id'] == book['author_id']:
+                num += 1
                 print(
-                    f"{author['id']}. {author['name']} {author['surname']}, Knyga: '{book['book_title']}', Žanras: {book['book_genre']}")
-    print("Jeigu norite pamatyti tik autorius, įrašykite raidę A. Jei norite pamatyti tik knygas, įrašykite raidę B")
+                    f"{num}. {author['name']} {author['surname']}, Knyga: '{book['book_title']}', Žanras: {book['book_genre']}")
+    library_options()
     while True:
-        letter = input().upper()
-        match letter:
-            case 'A':
+        option = input()
+        match option:
+            case '1':
                 for author in authors:
-                    print(f'{author['id']}. Autorius: {author['name']} {author['surname']}')
-            case 'B':
+                    print(f'{author['id']}. {author['name']} {author['surname']}')
+            case '2':
                 for book in books:
                     print(f'{book["id"]}. {book["book_title"]} {book["book_genre"]}')
+            case '3':
+                print("Įveskite autoriaus vardą arba pavardę:")
+                name_surname = input()
+                for author in authors:
+                    if str(author['name']) == name_surname or str(author['surname']) == name_surname:
+                        for book in books:
+                            if book['author_id'] == author['id']:
+                                print(f"{author['id']}. {author['name']} {author['surname']}, Knygos: '{book['book_title']}', Žanras: {book['book_genre']}")
+            case '4':
+                options_list()
             case _ :
                 print(f'Tokio pasirinkimo nėra. Grįžtame į pradinį meniu.')
                 options_list()
